@@ -1,0 +1,100 @@
+{
+  "cleaning_log": [
+    "TotalCharges: coerced text to numeric; repaired 11 tenure-zero blank values with 0.0",
+    "SeniorCitizen: recoded 0/1 to No/Yes for consistency",
+    "target encoded; churn rate 0.265 on 7043 customers"
+  ],
+  "split_sizes": {
+    "train": 4225,
+    "calibration_threshold": 1409,
+    "test": 1409
+  },
+  "cv_roc_auc": {
+    "majority": {
+      "mean": 0.5,
+      "std": 0.0,
+      "folds": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "logistic": {
+      "mean": 0.8424,
+      "std": 0.0155,
+      "folds": [
+        0.8571,
+        0.8524,
+        0.8397,
+        0.8452,
+        0.8173
+      ]
+    },
+    "hist_gbm": {
+      "mean": 0.8407,
+      "std": 0.012,
+      "folds": [
+        0.8432,
+        0.8503,
+        0.846,
+        0.8444,
+        0.8198
+      ]
+    }
+  },
+  "selected_model": "logistic",
+  "selection_reason": "logistic has the highest mean ROC-AUC, but the 0.0017 gap to hist_gbm is within the 0.005 comparability tolerance; no meaningful win is claimed, and logistic is retained for exact linear reason codes",
+  "calibration": {
+    "validation_brier_raw": 0.1672,
+    "validation_brier_calibrated": 0.1335,
+    "heldout_test_brier_raw": 0.1696,
+    "heldout_test_brier_calibrated": 0.1363
+  },
+  "decision": {
+    "fn_cost": 5.0,
+    "fp_cost": 1.0,
+    "theoretical_threshold": 0.1667,
+    "deployed_threshold": 0.1667,
+    "empirical_validation_threshold": 0.09,
+    "empirical_validation_cost": 0.3996,
+    "bootstrap_empirical_threshold_95pct": {
+      "n_boot": 1000,
+      "p2_5": 0.09,
+      "median": 0.09,
+      "p97_5": 0.18
+    },
+    "theoretical_and_empirical_same_validation_actions": true
+  },
+  "test": {
+    "roc_auc": 0.843,
+    "brier_raw": 0.1696,
+    "brier_calibrated": 0.1363,
+    "churner_recall": 0.922,
+    "churner_precision": 0.41,
+    "flag_rate": 0.598,
+    "expected_cost_per_customer": 0.4556
+  },
+  "segment_audit": {
+    "Month-to-month": {
+      "recall": 0.973,
+      "churn_rate": 0.4223,
+      "n": 791,
+      "churners": 334
+    },
+    "One year": {
+      "recall": 0.576,
+      "churn_rate": 0.115,
+      "n": 287,
+      "churners": 33
+    },
+    "Two year": {
+      "recall": 0.143,
+      "churn_rate": 0.0211,
+      "n": 331,
+      "churners": 7
+    }
+  },
+  "artifact": "churn-2.0.0.joblib"
+}

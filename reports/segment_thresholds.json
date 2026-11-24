@@ -1,0 +1,38 @@
+{
+  "global_threshold": 0.1667,
+  "segment_thresholds": {
+    "Month-to-month": {
+      "threshold": 0.18,
+      "n_test": 791,
+      "churners_test": 334,
+      "recall_global": 0.973,
+      "recall_segmented": 0.934
+    },
+    "One year": {
+      "threshold": 0.09,
+      "n_test": 287,
+      "churners_test": 33,
+      "recall_global": 0.576,
+      "recall_segmented": 0.576
+    },
+    "Two year": {
+      "threshold": 0.26,
+      "n_test": 331,
+      "churners_test": 7,
+      "recall_global": 0.143,
+      "recall_segmented": 0.0
+    }
+  },
+  "expected_cost_global": 0.4556,
+  "expected_cost_segmented": 0.4514,
+  "observed_cost_saving_per_customer": 0.0043,
+  "bootstrap_cost_saving_95pct": {
+    "n_boot": 5000,
+    "p2_5": -0.0263,
+    "median": 0.0043,
+    "p97_5": 0.0312,
+    "probability_segmented_lower_cost": 0.616
+  },
+  "recommendation": "retain_global_threshold",
+  "interpretation": "The segmented policy has a slightly lower point estimate of cost, but the bootstrap interval includes zero, so the evidence is not strong enough to justify segment-specific deployment complexity."
+}

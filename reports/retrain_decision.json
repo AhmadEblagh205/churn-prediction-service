@@ -1,0 +1,48 @@
+{
+  "clean_batch": {
+    "investigate_retraining": false,
+    "breaches": []
+  },
+  "shifted_batch": {
+    "investigate_retraining": true,
+    "breaches": [
+      "tenure",
+      "MonthlyCharges"
+    ]
+  },
+  "promotion_simulation": {
+    "threshold": 0.1667,
+    "champion": {
+      "roc_auc": 0.8336,
+      "brier": 0.139,
+      "expected_cost": 0.4598,
+      "recall": 0.9039,
+      "flag_rate": 0.5724
+    },
+    "challenger": {
+      "roc_auc": 0.8357,
+      "brier": 0.1398,
+      "expected_cost": 0.439,
+      "recall": 0.8754,
+      "flag_rate": 0.5061
+    },
+    "deltas": {
+      "cost_improvement": 0.0208,
+      "auc": 0.002,
+      "brier": 0.0008
+    },
+    "guardrails": {
+      "min_cost_improvement": 0.005,
+      "auc_tolerance": 0.002,
+      "brier_tolerance": 0.002
+    },
+    "promote": true,
+    "partition_sizes": {
+      "history": 4930,
+      "adaptation_batch": 1056,
+      "promotion_holdout": 1057
+    },
+    "scope": "Offline random-split governance simulation on a static public sample; not a temporal or live retraining claim."
+  },
+  "note": "PSI can trigger investigation, but it does not automatically replace the model. Promotion requires lower expected decision cost on a disjoint holdout while AUC and Brier score remain within explicit guardrails."
+}

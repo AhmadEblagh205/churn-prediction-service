@@ -1,0 +1,23 @@
+{
+  "clean_batch": {
+    "tenure": 0.0047,
+    "MonthlyCharges": 0.0008,
+    "TotalCharges": 0.0034,
+    "Contract": 0.0009,
+    "InternetService": 0.0007,
+    "PaymentMethod": 0.0041
+  },
+  "shifted_batch": {
+    "tenure": 3.0525,
+    "MonthlyCharges": 1.7358,
+    "TotalCharges": 0.0034,
+    "Contract": 0.2349,
+    "InternetService": 0.0007,
+    "PaymentMethod": 0.0041
+  },
+  "alerts_on_shifted": [
+    "tenure",
+    "MonthlyCharges",
+    "Contract"
+  ]
+}
